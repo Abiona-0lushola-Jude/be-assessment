@@ -48,6 +48,7 @@ app.use(express.urlencoded({extended : false}))
 app.use('/api', AuthorRouter)
 app.use('/api', BookRoute)
 app.use('/api', CategoryRouter)
+app.use('/api', require('./Routes/RelationsRoute'))
 
 
 // app listening

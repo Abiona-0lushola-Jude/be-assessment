@@ -53,3 +53,7 @@ Content-Type: application/json
     "publisher":"New Oceans",
     "file":"abiona.jpg"
 }
+
+
+###
+GET http://localhost:5000/api/allInfo
