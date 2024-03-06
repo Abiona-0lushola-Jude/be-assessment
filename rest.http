@@ -1,0 +1,55 @@
+GET http://localhost:5000/api/book/getAll
+
+###
+POST http://localhost:5000/api/book/postBook
+Content-Type: application/json
+
+{
+    "bookId":1,
+    "title":"A day in a Nigerian Life",
+    "description":"This is a sorry that talks abou the day activites of a young nigeria trying to meet ends meet",
+    "publisher":"Elsiver Publishing company",
+    "file":"vincent.png",
+    "lang":"English"
+}
+
+###
+GET http://localhost:5000/api/book/getBook/13
+
+###
+DELETE  http://localhost:5000/api/book/deleteBook/10
+
+###
+PATCH http://localhost:5000/api/book/updateBook/12
+Content-Type: application/json
+
+{
+    "title":"A sapa experience in a young Nigerian life",
+    "description":"new way in Nigeria",
+    "publisher":"",
+    "file":"",
+    "lang":""
+}
+
+###
+GET http://localhost:5000/api/author/getAuthor
+
+###
+GET http://localhost:5000/api/author/getAuthor/3
+
+###
+DELETE  http://localhost:5000/api/author/deleteAuthor/2
+
+
+###
+POST  http://localhost:5000/api/author/postAuthor
+Content-Type: application/json
+
+{
+    "authorId":"1",
+    "Name":"Abiona Olushola Jude",
+    "nationality":"Nigeria",
+    "Education":"B.sc in Surveying",
+    "publisher":"New Oceans",
+    "file":"abiona.jpg"
+}
