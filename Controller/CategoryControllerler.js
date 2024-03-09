@@ -16,11 +16,10 @@ module.exports = {
     getOneCategory: async (req, res)=> {
 
         const categoryId = req.params.id
-        const q = "SELECT * FROM books.category WHERE blog_id =? "
+        const q = "SELECT * FROM books.category WHERE cat_id =? "
 
         await DB.query(q,[categoryId], (err, data)=>{
             if (err) return res.json({message: err.message})
-
 
             res.json(data)
 
@@ -29,22 +28,18 @@ module.exports = {
 
     postCategory: async (req, res) => {
 
-        const bookId = req.body.id
-        const title = req.body.title
+        const cat_id = req.body.id
+        const name = req.body.name
         const descpription = req.body.description
-        const publisher = req.body.publisher
         const file = req.body.file
-        const lang = req.body.lang
+       
 
-
-        const q = "INSERT INTO books.category (`book_id`, `title`, `description`, `publisher`, `file`, `lang`) VALUES (?)"
+        const q = "INSERT INTO books.category (`cat_id`, `name`, `description`, `file`) VALUES (?)"
         const values = [
-                bookId,
-                title,
+                cat_id,
+                name,
                 descpription,
-                publisher,
-                file,
-                lang
+                file
             ]
 
             await DB.query(q, [values], (err,data)=>{
@@ -59,16 +54,14 @@ module.exports = {
 
     updateCaregory: async (req, res)=>{
 
-        const categoryId = req.body.id
-        const title = req.body.title
+        const cat_id = req.body.id
+        const name = req.body.name
         const descpription = req.body.description
-        const publisher = req.body.publisher
         const file = req.body.file
-        const lang = req.body.lang
 
-        const firstQuery = "SELECT * FROM  books.book WHERE  `categoryIdnpm start`= ? "
+        const firstQuery = "SELECT * FROM  books.book WHERE  `cat_id` = ? "
 
-        await DB.query(firstQuery, [blogId], async(err, data)=>{
+        await DB.query(firstQuery, [cat_id], async(err, data)=>{
             if(err) return res.json({message: err.message})
 
 
@@ -79,14 +72,12 @@ module.exports = {
 
             const q = "UPDATE books.category  SET  `title`= ?, `description`= ?, `publisher`= ?, `file`= ?, `lang` = ? WHERE blog_id = ?"
             const values = [
-                title,
+                name,
                 descpription,
-                publisher,
                 file,
-                lang
             ]
 
-            await DB.query(q, [...values, categoryId], (err,data)=>{
+            await DB.query(q, [...values, cat_id], (err,data)=>{
                 if (err) return res.json({message: err.message})
 
 
@@ -99,7 +90,7 @@ module.exports = {
     deleteCategory: async (req, res)=>{
         const categoryId = req.params.id
 
-        const q = "DELETE FROM books.category WHERE `categoryId` = ?"
+        const q = "DELETE FROM books.category WHERE `cat_id` = ?"
 
         await DB.query(q, [categoryId], (err, data)=>{
             if(err) return res.json({message: err.message})

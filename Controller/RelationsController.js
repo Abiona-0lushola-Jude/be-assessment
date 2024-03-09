@@ -1,10 +1,8 @@
 const DB  =  require('../Database/Database')
 
-
 module.exports = {
 
     getallInfo : async (req, res)=>{
-
 
         const q = "SELECT * FROM books.book JOIN books.author ON book.authorId = author.authorId"
 
@@ -15,8 +13,6 @@ module.exports = {
             res.json(data)
 
         })
-
-
     },
 
     getinfoParam : async (req, res)=>{
@@ -31,13 +27,7 @@ module.exports = {
 
             res.json(data)
         })
-    }
-
-        
-
-    
-
-
+    },
 
 
 }
